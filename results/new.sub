@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J toughshear                          # Job name
+#SBATCH -o darpa_fft%j.out                        # output file (%j expands to jobID)
+#SBATCH -e darpa_fft%j.err                        # error log file (%j expands to jobID)
+#SBATCH --mail-type=ALL                        # Request status by email 
+#SBATCH --mail-user=hz253@cornell.edu          # Email address to send results to.
+#SBATCH -N 1                                   # Total number of nodes requested
+#SBATCH -n 32                                  # Total number of cores requested
+#SBATCH --get-user-env                         # retrieve the users login environment
+#SBATCH --mem=10000                            # server memory requested (per node)
+#SBATCH -t 10:00:00                           # Time limit (hh:mm:ss)
+#SBATCH --partition="jingjie-interactive"                  # Request partition
+python3 -u ../main/Kalman-and-Bayesian-Filters-in-Python/id1.py
+python3 -u ../main/Kalman-and-Bayesian-Filters-in-Python/id21.py
+# python3 -u ../main/Kalman-and-Bayesian-Filters-in-Python/id24.py
+python3 -u ../main/Kalman-and-Bayesian-Filters-in-Python/id87.py
